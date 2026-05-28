@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Coffee",
+    "amount": 8,
+    "category": "Food",
+    "type": "expense"
+  },
+  {
+    "title": "Salary",
+    "amount": 3000,
+    "category": "Salary",
+    "type": "income"
+  }
+]
