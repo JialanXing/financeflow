@@ -1,21 +1,22 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const activitySchema = new mongoose.Schema(
   {
-    username: {
+    user: {
+      type:
+        mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    action: {
       type: String,
       required: true,
     },
 
-    email: {
+    details: {
       type: String,
-      required: true,
-      unique: true,
-    },
-
-    password: {
-      type: String,
-      required: true,
+      default: "",
     },
   },
   {
@@ -24,6 +25,6 @@ const userSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model(
-  "User",
-  userSchema
+  "Activity",
+  activitySchema
 );

@@ -13,140 +13,90 @@ function Register() {
   const [username, setUsername] =
     useState("");
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] =
+    useState("");
 
   const [password, setPassword] =
     useState("");
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+  const handleRegister =
+    async (e) => {
+      e.preventDefault();
 
-    try {
-      const res = await axios.post(
-        "http://localhost:5001/api/auth/register",
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      try {
+        const res = await axios.post(
+          "http://localhost:5001/api/auth/register",
+          {
+            username,
+            email,
+            password,
+          }
+        );
 
-      localStorage.setItem(
-        "token",
-        res.data.token
-      );
+        localStorage.setItem(
+          "token",
+          res.data.token
+        );
 
-      navigate("/");
-    } catch (error) {
-      alert("Register failed");
-    }
-  };
+        navigate("/");
+      } catch (error) {
+        alert("Register failed");
+      }
+    };
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <form
-        onSubmit={handleRegister}
-        style={{
-          width: "350px",
-          background: "white",
-          padding: "40px",
-          borderRadius: "16px",
-          boxShadow:
-            "0 4px 20px rgba(0,0,0,0.1)",
-        }}
-      >
-        <h1
-          style={{
-            marginBottom: "30px",
-            textAlign: "center",
-          }}
-        >
-          Create Account
-        </h1>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h1>Create Account</h1>
 
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) =>
-            setUsername(e.target.value)
-          }
-          style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "1px solid #ddd",
-          }}
-        />
+        <p className="subtitle">
+          Join FinanceFlow Today
+        </p>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-          style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "1px solid #ddd",
-          }}
-        />
+        <form onSubmit={handleRegister}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) =>
+              setUsername(
+                e.target.value
+              )
+            }
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-          style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "20px",
-            borderRadius: "10px",
-            border: "1px solid #ddd",
-          }}
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
+          />
 
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "14px",
-            border: "none",
-            borderRadius: "10px",
-            background: "#2563eb",
-            color: "white",
-            fontSize: "16px",
-            cursor: "pointer",
-          }}
-        >
-          Register
-        </button>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              setPassword(
+                e.target.value
+              )
+            }
+          />
 
-        <p
-          style={{
-            marginTop: "20px",
-            textAlign: "center",
-          }}
-        >
-          Already have an account?{" "}
+          <button type="submit">
+            Register
+          </button>
+        </form>
+
+        <p className="switch-text">
+          Already have account?{" "}
           <Link to="/login">
             Login
           </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
 }

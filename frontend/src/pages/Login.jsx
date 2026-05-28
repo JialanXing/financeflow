@@ -10,7 +10,8 @@ import {
 function Login() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] =
+    useState("");
 
   const [password, setPassword] =
     useState("");
@@ -39,94 +40,47 @@ function Login() {
   };
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <form
-        onSubmit={handleLogin}
-        style={{
-          width: "350px",
-          background: "white",
-          padding: "40px",
-          borderRadius: "16px",
-          boxShadow:
-            "0 4px 20px rgba(0,0,0,0.1)",
-        }}
-      >
-        <h1
-          style={{
-            marginBottom: "30px",
-            textAlign: "center",
-          }}
-        >
-          FinanceFlow
-        </h1>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h1>FinanceFlow</h1>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-          style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "1px solid #ddd",
-          }}
-        />
+        <p className="subtitle">
+          Smart Expense Management
+        </p>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-          style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "20px",
-            borderRadius: "10px",
-            border: "1px solid #ddd",
-          }}
-        />
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
+          />
 
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "14px",
-            border: "none",
-            borderRadius: "10px",
-            background: "#2563eb",
-            color: "white",
-            fontSize: "16px",
-            cursor: "pointer",
-          }}
-        >
-          Login
-        </button>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              setPassword(
+                e.target.value
+              )
+            }
+          />
 
-        <p
-          style={{
-            marginTop: "20px",
-            textAlign: "center",
-          }}
-        >
-          Don't have an account?{" "}
+          <button type="submit">
+            Login
+          </button>
+        </form>
+
+        <p className="switch-text">
+          No account?{" "}
           <Link to="/register">
             Register
           </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
 }
